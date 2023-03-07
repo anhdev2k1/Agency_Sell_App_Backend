@@ -1,11 +1,24 @@
 import express from "express";
 import DBMongoose from "./configs/index.js";
+import dotenv from "dotenv";
+import cors from "cors";
+import cookieParser from "cookie-parser";
+import { UserRoute } from "./routes/user.route.js";
+import { ShopRoute } from "./routes/shop.route.js";
+import { ProductRoute } from "./routes/product.route.js";
 const app = express();
-const port = 5000;
-app.get("/", (req, res) => {
-  res.send("Hello World! 123");
-});
+dotenv.config();
+const PORT = process.env.PORT || 5000;
 DBMongoose();
-app.listen(port, () => {
-  console.log(`The app is listening on port ${port}`);
+app.get("/", (req, res) => {
+  res.status(200).send("Hello Văn Anh");
+});
+app.use(cors());
+app.use(express.json())
+app.use(cookieParser());
+app.use("/api/auth", UserRoute);
+app.use("/api",ShopRoute)
+app.use("/api",ProductRoute)
+app.listen(PORT, () => {
+  console.log(`The app is listening on port ${PORT}`);
 });
