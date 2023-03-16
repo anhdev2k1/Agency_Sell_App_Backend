@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 import { Product } from "../models/product.model.js";
 const GetProducts = async () => {
-  const getAllProduct = await Product.find({});
+  const getAllProduct = await Product.find({}).populate("shop");
   return getAllProduct;
 };
 const GetProductById = async (idProduct) => {
   const pid = mongoose.Types.ObjectId(idProduct);
-  const getProduct = await Product.findOne(pid);
+  const getProduct = await Product.findOne(pid).populate("shop");
   return getProduct;
 };
 const CreateProduct = async (data) => {

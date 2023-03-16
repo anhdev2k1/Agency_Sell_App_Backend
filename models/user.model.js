@@ -11,11 +11,9 @@ const UserSchema = new Schema(
     },
     phone: {
       type: String,
-      require: true,
     },
     address: {
       type: String,
-      require: true,
     },
     password: {
       type: String,
