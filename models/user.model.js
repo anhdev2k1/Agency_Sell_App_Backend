@@ -21,7 +21,15 @@ const UserSchema = new Schema(
     },
     role: {
       type: Number,
-      default: 1
+      default: 1,
+    },
+    url: {
+      type: Schema.Types.ObjectId,
+      ref: "Image",
+    },
+    shop: {
+      type: Schema.Types.ObjectId,
+      ref: "Shop",
     },
   },
   { timestamps: true }

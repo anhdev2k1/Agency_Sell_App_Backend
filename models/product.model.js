@@ -2,7 +2,8 @@ import mongoose, { Schema } from "mongoose";
 const ProductSchema = new Schema(
   {
     category_id: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref: "Category",
     },
     name: {
       type: String,
@@ -26,6 +27,10 @@ const ProductSchema = new Schema(
     shop: {
       type: Schema.Types.ObjectId,
       ref: "Shop",
+    },
+    image: {
+      type: Schema.Types.ObjectId,
+      ref: "Image",
     },
   },
   { timestamps: true }

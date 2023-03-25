@@ -70,6 +70,20 @@ const GetUserById = async (req, res) => {
     });
   }
 };
+const ChangePassword = async (req, res) => {
+  try {
+    const result = await UserService.ChangePassword(req.body);
+    res.status(200).json({
+      status: "success",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "failed",
+      data: error.message,
+    });
+  }
+};
 const DeleteUser = async (req, res) => {
   try {
     const result = await UserService.GetUserById(req.params.id);
@@ -106,4 +120,5 @@ export const UserController = {
   GetUserById,
   DeleteUser,
   UpdateUser,
+  ChangePassword,
 };
